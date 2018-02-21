@@ -9,6 +9,7 @@ import ProductContainer from './ProductContainer.js'
 import './App.css'
 
 import { fetchWebServerVersion } from './modules/versions'
+import { fetchProducts } from './modules/products'
 
 class App extends Component {
 
@@ -17,25 +18,11 @@ class App extends Component {
     this.state = {
       products:[]
     }
-    this.fetchProducts()
+    this.props.fetchProducts()
 
     this.props.fetchWebServerVersion()
 
     this.handleAddProduct = this.handleAddProduct.bind(this)
-  }
-
-  fetchProducts(){
-    fetch('/api/products/get',{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'same-origin'
-    }).then(r => {
-      return r.json()
-    }).then(json => {
-      this.setState({products: json})
-    })
   }
 
   onProductRemove(productName){
@@ -92,7 +79,7 @@ class App extends Component {
       </div>
       <div className='products-container'>
         <ProductMenu
-          products={this.state.products}
+          products={this.props.products}
           onProductRemove={n => this.onProductRemove(n)} />
         <Route exact path='/products/:productName' component={
           props => <ProductContainer {...props} products={this.state.products} />
@@ -103,11 +90,13 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  version: state.versions.version
+  version: state.versions.version,
+  products: state.products.products
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchWebServerVersion
+  fetchWebServerVersion,
+  fetchProducts
 }, dispatch)
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
