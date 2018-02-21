@@ -9,7 +9,7 @@ import ProductContainer from './ProductContainer.js'
 import './App.css'
 
 import { fetchWebServerVersion } from './modules/versions'
-import { fetchProducts, addProduct } from './modules/products'
+import { fetchProducts, addProduct, removeProduct } from './modules/products'
 
 class App extends Component {
 
@@ -25,18 +25,8 @@ class App extends Component {
     this.handleAddProduct = this.handleAddProduct.bind(this)
   }
 
-  onProductRemove(productName){
-    fetch('/api/products/delete/'+productName, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'same-origin'
-    }).then(r => {
-      return r.json()
-    }).then(json => {
-      this.setState({products: json})
-    })
+  onProductRemove(productName){    
+    this.props.removeProduct(productName);
   }
 
   handleAddProduct(event){
@@ -86,7 +76,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchWebServerVersion,
   fetchProducts,
-  addProduct
+  addProduct,
+  removeProduct
 }, dispatch)
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

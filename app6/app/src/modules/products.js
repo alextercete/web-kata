@@ -4,6 +4,8 @@ export const PRODUCTS_REQUESTED = 'products/PRODUCTS_REQUESTED'
 export const PRODUCTS_COMPLETED = 'products/PRODUCTS_COMPLETED'
 export const PRODUCT_ADD_REQUESTED = 'products/PRODUCT_ADD_REQUESTED'
 export const PRODUCT_ADD_COMPLETED = 'products/PRODUCT_ADD_COMPLETED'
+export const PRODUCT_REMOVE_REQUESTED = 'products/PRODUCT_REMOVE_REQUESTED'
+export const PRODUCT_REMOVE_COMPLETED = 'products/PRODUCT_REMOVE_COMPLETED'
 
 const initialState = {
     inProgress: false,
@@ -34,6 +36,17 @@ export default (state = initialState, action) => {
           inProgress: false,
           products: action.payload.products
         }
+        case PRODUCT_REMOVE_REQUESTED:
+          return {
+              ...state,
+              inProgress: true
+          }
+        case PRODUCT_REMOVE_COMPLETED:
+          return {
+            ...state,
+            inProgress: false,
+            products: action.payload.products
+          }
       default:
         return state
     }
@@ -83,3 +96,26 @@ export default (state = initialState, action) => {
       })
     }
   }
+
+  export const removeProduct = (productName) => {
+    return dispatch => {
+      dispatch({ type: PRODUCT_REMOVE_REQUESTED })
+      const url = '/api/products/delete/'+productName
+      fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin'
+      }).then(response => {
+        return response.json()
+      }).then(json => {
+        dispatch({
+          type: PRODUCT_REMOVE_COMPLETED,
+          payload: { products: json }
+        })
+      })
+    }
+  }
+
