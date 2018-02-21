@@ -4,7 +4,7 @@ export const WEB_SERVER_VERSION_REQUESTED = 'versions/WEB_SERVER_VERSION_REQUEST
 export const WEB_SERVER_VERSION_COMPLETED = 'versions/WEB_SERVER_VERSION_COMPLETED'
 
 const initialState = {
-  inProgress: false,
+  inProgress: false, //TODO: why is it needed?
   version: null,
 }
 

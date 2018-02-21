@@ -23,6 +23,7 @@ class App extends Component {
     this.props.fetchWebServerVersion()
 
     this.handleAddProduct = this.handleAddProduct.bind(this)
+    //TODO: why onProductRemove not binded like this ^^ ?
   }
 
   onProductRemove(productName){    
