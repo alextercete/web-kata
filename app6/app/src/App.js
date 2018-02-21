@@ -9,7 +9,7 @@ import ProductContainer from './ProductContainer.js'
 import './App.css'
 
 import { fetchWebServerVersion } from './modules/versions'
-import { fetchProducts } from './modules/products'
+import { fetchProducts, addProduct } from './modules/products'
 
 class App extends Component {
 
@@ -46,18 +46,7 @@ class App extends Component {
       description: event.target.description.value
     }
 
-    fetch('/api/products/add', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify(newProduct)
-    }).then(r => {
-      return r.json()
-    }).then(json => {
-      this.setState({products: json})
-    })
+    this.props.addProduct(newProduct);
   }
 
   render() {
@@ -82,7 +71,7 @@ class App extends Component {
           products={this.props.products}
           onProductRemove={n => this.onProductRemove(n)} />
         <Route exact path='/products/:productName' component={
-          props => <ProductContainer {...props} products={this.state.products} />
+          props => <ProductContainer {...props} products={this.props.products} />
         } />
       </div>
     </div>
@@ -96,7 +85,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchWebServerVersion,
-  fetchProducts
+  fetchProducts,
+  addProduct
 }, dispatch)
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
