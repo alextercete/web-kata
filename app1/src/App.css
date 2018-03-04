@@ -12,3 +12,29 @@
 .App-intro {
   font-size: large;
 }
+
+.product {
+  border: solid;
+  margin: 1em;
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.product-free {
+  color: red;
+}
+
+.remove {
+  float: right;
+  padding: 5px;
+}
+
+.filter {
+  padding: 15px;
+}
+
+.expander {
+  margin-left: 10px;
+}
