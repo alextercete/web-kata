@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Products from './data.js'
 import './App.css'
+import FilterComponent from './components/FilterComponent';
+import AddProductForm from './components/AddProductForm';
+import ProductList from './components/ProductList';
 
 class App extends Component {
   constructor(props) {
@@ -50,133 +53,6 @@ class App extends Component {
         />
       </div>
     </div>
-  }
-}
-
-class FilterComponent extends Component {
-  render() {
-    return (
-      <div className="filter">
-        <label>
-          Filter:
-          <input
-            type="text"
-            placeholder="filter products..."
-            onChange={this.props.onFilterChanged}
-          />
-        </label>
-      </div>
-    );
-  }
-}
-
-class ProductList extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.products.map(
-          p => <Product
-            key={p.name}
-            product={p}
-            onRemove={this.props.onRemove}/>
-        )}
-      </div>
-    );
-  }
-}
-
-class AddProductForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { name: "", description: "" };
-    this.onNameChange = this.onNameChange.bind(this);
-    this.onDescriptionChange = this.onDescriptionChange.bind(this);
-  }
-
-  onNameChange(event) {
-    this.setState({name: event.target.value});
-  }
-
-  onDescriptionChange(event) {
-    this.setState({description: event.target.value});
-  }
-
-  render() {
-    return (
-      <fieldset>
-        <legend>Add a new product</legend>
-        <form
-          onSubmit={e => this.props.onAdd(e, this.state.name, this.state.description)}>
-          <div>
-            <label>Product name:</label>
-            <input
-              type="text"
-              name="productName"
-              value={this.state.name}
-              onChange={this.onNameChange}
-            />
-          </div>
-          <div>
-            <label>Description</label>
-            <input
-              type="text"
-              name="productDescription"
-              value={this.state.description}
-              onChange={this.onDescriptionChange}
-            />
-          </div>
-          <button type="submit">Add</button>
-        </form>
-      </fieldset>
-    );
-  }
-}
-
-class Product extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {showDescriptions: false};
-    this.onToggle = this.onToggle.bind(this);
-  }
-
-  onToggle(event) {
-    this.setState(prevState => ({
-      showDescriptions: prevState.showDescriptions ? false : true
-    }));
-  }
-
-  render() {
-    const product = this.props.product;
-    return (
-      <div className="product">
-        <div
-          className="remove"
-          onClick={e => this.props.onRemove(e, product)}>
-            Remove
-        </div>
-        <p className="product-name">
-          {product.name}
-          <Expander
-            onClick={this.onToggle}
-            expanded={this.state.showDescriptions}
-          />
-        </p>
-        {this.state.showDescriptions && <p>{product.description}</p>}
-        {product.free && <p className="product-free">free tool!</p>}
-      </div>
-    );
-  }
-}
-
-class Expander extends Component {
-  render() {
-    return (
-      <span className="expander" onClick={this.props.onClick}>
-        {this.props.expanded ? '-' : '+'}
-      </span>
-    );
   }
 }
 
