@@ -12,3 +12,38 @@
 .App-intro {
   font-size: large;
 }
+
+.App .products{
+  background:#f1f1f1;
+  padding:15px;
+  border-radius:8px;
+  box-shadow: 1px 1px 5px 2px #000;
+  max-width: 80%;
+  margin:0 auto;
+}
+
+.App .products ul{
+  list-style:none;
+  text-align: left;
+}
+
+
+.App .products ul li{
+  padding:5px;
+}
+
+.App .products ul li:nth-child(odd){
+  background-color : rgba(208, 255, 208, 0.192);
+}
+
+.App .products ul li:nth-child(even){
+  background-color : rgb(255, 213, 213);
+}
+
+.App .products ul li span.free{
+  font-weight: bold;
+}
+
+.App .products ul li span.new{
+  font-style: italic;
+}

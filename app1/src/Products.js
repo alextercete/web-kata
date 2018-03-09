@@ -5,11 +5,13 @@ import React, { Component } from 'react'
 class Products extends Component  {
     render(){
          return <div className='products'>
+         <ul>
           {
             this.props.displayProducts.map((product, index) =>
                 <Product key={index} product={product}/>
             )
           }
+          </ul>
         </div>
     }
   }
@@ -17,7 +19,7 @@ class Products extends Component  {
   class NewProduct extends Component  {
     render(){
     if (this.props.new) {
-      return <b> New </b>;
+      return <span className="new"> New </span>;
     }
     return null;
 }
@@ -25,7 +27,7 @@ class Products extends Component  {
 
   function FreeProduct(props) {
     if (props.free) {
-      return <i> Free </i>;
+      return <span className="free"> Free </span>;
     }
     return null;
   }
