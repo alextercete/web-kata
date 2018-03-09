@@ -2,15 +2,21 @@ export default {
     products: [
         {
             name: 'SQL Compare',
-            description : 'Compares and synchronizes SQL Server database schemas'
+            description : 'Compares and synchronizes SQL Server database schemas',
+            free : false,
+            new : true
         },
         {
             name: 'SQL Data Compare',
-			description : 'Compares and synchronizes SQL Server database contents'
+			description : 'Compares and synchronizes SQL Server database contents',
+            free : true,
+            new : true
         },
         {
             name: 'SQL Source Control',
-            description : 'Connect your databases to your source control system'
+            description : 'Connect your databases to your source control system',
+            free : false,
+            new : false
         },
         {
             name: 'SQL Prompt',
