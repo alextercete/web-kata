@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
 
+
+  
 class Products extends Component  {
     render(){
          return <div className='products'>
           {
             this.props.displayProducts.map((product, index) =>
-          <li key={index}> {product.name}  {product.description}</li>
-          )}
+                <Product key={index} name={product.name} description={product.description} />
+            )
+          }
         </div>
+    }
+  }
+
+  
+class Product extends Component  {
+    render(){
+         return <li> 
+         {this.props.name} 
+         </li>
     }
   }
 
