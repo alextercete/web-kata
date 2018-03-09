@@ -12,8 +12,8 @@ class App extends Component {
         To get started change this text and save save to reload.
       </p>
       <div className='products'>
-        {data.products.map((product) =>
-        <li>{product.name}</li>
+        {data.products.map((product, index) =>
+        <li key={index}> {product.name}  {product.description}</li>
         )}
       </div>
     </div>
