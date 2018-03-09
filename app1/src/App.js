@@ -11,12 +11,19 @@ class App extends Component {
       <p className="App-intro">
         To get started change this text and save save to reload.
       </p>
-      <div className='products'>
-        {data.products.map((product, index) =>
+      <Products displayProducts={data.products} />
+    </div>
+  }
+}
+
+class Products extends Component  {
+  render(){
+       return <div className='products'>
+        {
+          this.props.displayProducts.map((product, index) =>
         <li key={index}> {product.name}  {product.description}</li>
         )}
       </div>
-    </div>
   }
 }
 
