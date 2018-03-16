@@ -8,8 +8,7 @@ class App extends Component {
   constructor(props){
       super(props);
       this.state = {
-          products: data.products,
-          
+          products: data.products          
       }
   }
 
@@ -18,7 +17,13 @@ class App extends Component {
       <div className="App-header">
         <h2>Kata 2- Add and remove objects</h2>
       </div>
-      <div className='add-product'>View to add product here...</div>
+      <div className='add-product'>
+      <form>
+      <label>Product Name: <input type="text"></input></label>
+        <label>Description: <input type="text"></input></label>
+        <input type="submit" value="Enter" />
+        </form>
+      </div>
       <div className='products-container'>
         <Products products={this.state.products}/>
       </div>
