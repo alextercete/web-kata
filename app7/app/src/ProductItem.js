@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
-import { removeProduct } from './modules/products'
+import { removeProduct, addVote } from './modules/products'
 
 class ProductItem extends Component {
   render() {
@@ -12,9 +12,8 @@ class ProductItem extends Component {
       <div className='name'>
         <Link to={'/products/' + name}>{name}</Link>
       </div>
-      <div
-        className='product-item-remove'
-        onClick={() => this.props.removeProduct(name)}>x</div>
+      <div className='product-item-remove' onClick={() => this.props.removeProduct(name)}>x</div>
+      <button type="button" onClick={() => this.props.addVote(this.props.product.name)}>Vote</button>
     </div>
   }
 }
@@ -24,6 +23,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   removeProduct,
+  addVote
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)

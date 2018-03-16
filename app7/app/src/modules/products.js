@@ -6,9 +6,12 @@ export const PRODUCT_REMOVE_REQUESTED = 'products/PRODUCT_REMOVE_REQUESTED'
 export const PRODUCT_REMOVE_COMPLETED = 'products/PRODUCT_REMOVE_COMPLETED'
 export const PRODUCT_ADD_REQUESTED = 'products/PRODUCT_ADD_REQUESTED'
 export const PRODUCT_ADD_COMPLETED = 'products/PRODUCT_ADD_COMPLETED'
+export const PRODUCT_VOTE_REQUESTED = 'products/PRODUCT_VOTE_REQUESTED'
+export const PRODUCT_VOTE_COMPLETED = 'products/PRODUCT_VOTE_COMPLETED'
 
 const initialState = {
-  products: []
+  products: [],
+  votes: []
 }
 
 export default (state = initialState, action) => {
@@ -42,6 +45,17 @@ export default (state = initialState, action) => {
         ...state,
         products: action.payload.products
       }
+    case PRODUCT_VOTE_REQUESTED:
+      return {
+        ...state,
+      }
+    case PRODUCT_VOTE_COMPLETED:
+      var newState = { ...state }
+      if (newState.votes[action.payload.product] === undefined) {
+        newState.votes[action.payload.product] = 0
+      }
+      newState.votes[action.payload.product] = state.votes[action.payload.product] + 1
+      return newState;
     default:
       return state
   }
@@ -83,6 +97,15 @@ export const removeProduct = (productName) => {
         type: PRODUCT_REMOVE_COMPLETED,
         payload: { products: json }
       })
+    })
+  }
+}
+
+export const addVote = (product) => {
+  return dispatch => {
+    dispatch({
+      type: PRODUCT_VOTE_COMPLETED,
+      payload: { product: product }
     })
   }
 }

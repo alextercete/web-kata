@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { removeProduct } from './modules/products'
 
 import './ProductContainer.css'
 import Product from './Product.js'
@@ -10,6 +11,7 @@ class ProductContainer extends Component {
     const { selectedProduct } = this.props
     return <div className='product-container'>
       <div className='product-header'>
+        <div className='product-item-remove' onClick={() => this.props.removeProduct(this.props.selectedProduct.name)}>x</div>
       </div>
       {selectedProduct && <Product product={this.props.selectedProduct} />}
     </div>
@@ -21,6 +23,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  removeProduct,
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductContainer)
