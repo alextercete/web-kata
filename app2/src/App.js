@@ -5,6 +5,14 @@ import data from './data.js'
 import Products from './Products.js'
 
 class App extends Component {
+  constructor(props){
+      super(props);
+      this.state = {
+          products: data.products,
+          
+      }
+  }
+
   render() {
     return <div className="App">
       <div className="App-header">
@@ -12,7 +20,7 @@ class App extends Component {
       </div>
       <div className='add-product'>View to add product here...</div>
       <div className='products-container'>
-        <Products products={data.products} />
+        <Products products={this.state.products}/>
       </div>
     </div>
   }
