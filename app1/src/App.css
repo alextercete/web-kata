@@ -30,6 +30,9 @@
 
 .App .products ul li{
   padding:5px;
+  margin: 10px;
+  border-radius:1px;
+  box-shadow: 1px 1px 1px 1px rgb(124, 124, 124)
 }
 
 .App .products ul li:nth-child(odd){
