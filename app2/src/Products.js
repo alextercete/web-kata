@@ -2,6 +2,17 @@ import React, { Component } from 'react'
 import './Products.css'
 
 class Product extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {name: '', description: ''};
+  
+        // This binding is necessary to make `this` work in the callback
+        this.removeProduct = this.removeProduct.bind(this);
+      }
+    removeProduct(){
+        this.props.onRemoveProduct(this.props.product);
+    }
+    
     render(){
         return <div className='product'>
             <div className='details'>
@@ -9,18 +20,20 @@ class Product extends Component{
                 <div className='desc'>{this.props.product.description}</div>
             </div>
             <div className='actions'>
-                <div className='remove' title='fix me'>x</div>
+                <div className='remove' title='fix me' onClick={this.removeProduct}>x</div>
             </div>
         </div>
-    }
+    }    
 }
+
+
 
 class Products extends Component{
     render(){
         return <div className='products'>
             {this.props.products.map(
                 (p, i) => 
-                <Product product={p} key={'product-' + i }/>
+                <Product product={p} key={'product-' + i } onRemoveProduct={this.props.onRemoveProduct}/>
             )}
         </div>
     }

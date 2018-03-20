@@ -13,14 +13,22 @@ class App extends Component {
 
       // This binding is necessary to make `this` work in the callback
       this.AddNewProduct = this.AddNewProduct.bind(this);
+      this.RemoveProduct = this.RemoveProduct.bind(this);
   }
 
   AddNewProduct(product){
       var newProds = this.state.products.concat([product]);      
       this.setState({
          products: newProds
-      });
+      });    
   }
+
+  RemoveProduct(product){
+       let newProds = this.state.products.filter(a => a !== product);
+      this.setState({
+        products:newProds
+      });
+      }
 
   render() {
     return <div className="App">
@@ -31,7 +39,7 @@ class App extends Component {
       <AddProduct onAddNewProduct={this.AddNewProduct}/>
       </div>
       <div className='products-container'>
-        <Products products={this.state.products}/>
+        <Products products={this.state.products} onRemoveProduct={this.RemoveProduct}/>
       </div>
     </div>
   }
