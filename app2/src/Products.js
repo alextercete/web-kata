@@ -26,4 +26,29 @@ class Products extends Component{
     }
 }
 
-export default Products
+export class AddProduct extends Component{
+    constructor(props) {
+      super(props);
+      this.state = {name: '', description: ''};
+
+      // This binding is necessary to make `this` work in the callback
+      this.addProduct = this.addProduct.bind(this);
+    }
+
+    addProduct(sender){
+       var product = {name:sender.target.productName.value, description: sender.target.productDescription.value};
+    
+        this.props.onAddNewProduct(product);
+      sender.preventDefault();
+    }
+
+    render(){        
+        return <form onSubmit={this.addProduct}>
+            <label>Product Name: <input id="productName" type="text"></input></label>
+            <label>Description: <input id="productDescription" type="text"></input></label>
+            <input type="submit" id="productSubmit" value="Enter" />
+        </form>
+    }
+}
+
+export default Products;
