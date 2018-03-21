@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import Expander from './Expander'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Expander from './Expander';
 
 class Product extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ class Product extends Component {
             Remove
         </div>
         <p className="product-name">
-          {product.name}
+          <Link to={`/products/${product.name}`}>
+            {product.name}
+          </Link>
           <Expander
             onClick={this.onToggle}
             expanded={this.state.showDescriptions}
