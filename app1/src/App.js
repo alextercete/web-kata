@@ -38,12 +38,6 @@ class App extends Component {
 
   render() {
     return <div className="App">
-      <div className="App-header">
-        <h2>Welcome Introduction to <code>web-kata#1</code></h2>
-      </div>
-      <p className="App-intro">
-        To get started change this text and save save to reload.
-      </p>
       <div className='products'>
         <AddProductForm onAdd={this.onAdd}/>
         <FilterComponent onFilterChanged={this.onFilterChanged}/>
