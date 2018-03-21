@@ -5,7 +5,7 @@ import FilterComponent from './components/FilterComponent';
 import AddProductForm from './components/AddProductForm';
 import ProductList from './components/ProductList';
 
-class App extends Component {
+class ProductOverview extends Component {
   constructor(props) {
     super(props);
 
@@ -50,4 +50,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ProductOverview;
