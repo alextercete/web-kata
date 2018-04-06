@@ -5,6 +5,7 @@ import ProductMenu from './ProductMenu';
 import ProductContainer from './ProductContainer';
 import { Product } from './Models/Product';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 interface Props { }
 
@@ -26,9 +27,14 @@ class App extends Component<Props, State> {
         </div>
         <div className='products-container'>
           <ProductMenu products={this.state.products} />
-          <ProductContainer />
+          <Router>
+            <div>
+              <Route path='/' />
+              <Route path='/products/:productName' component={ProductContainer} />
+            </div>
+          </Router>
         </div>
-      </div>
+      </div >
     );
   }
 }

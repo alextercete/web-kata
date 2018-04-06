@@ -1,27 +1,23 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { GetData } from './data';
-import { Product } from './Models/Product';
 import './ProductContainer.css';
+import { RouteComponentProps } from 'react-router-dom';
 
-interface Props { }
-
-interface ProductContainerState {
-  products: Product[];
+interface Props {
+  productName: string;
 }
 
-class ProductContainer extends Component<Props, ProductContainerState> {
+interface Props extends RouteComponentProps<Props> { }
+
+class ProductContainer extends Component<Props, {}> {
   constructor(props: Props) {
     super(props);
-    this.state = {
-      products: GetData()
-    };
   }
 
   render(): JSX.Element {
     return (
       <div className='product-container'>
-        Product container
+        {this.props.match.params.productName}
       </div>
     );
   }

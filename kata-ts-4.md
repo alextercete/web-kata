@@ -15,13 +15,13 @@ Write the JavaScript/React code to:
 * Navigate to each product page
 * Be able to share hard links of any product page
 
-1. Install `react-router-dom`
-    * [yarn add](https://yarnpkg.com/lang/en/docs/cli/add/)
+1. Install `react-router-dom` and it's TypeScript bindings:
+    * [yarn add](https://yarnpkg.com/lang/en/docs/cli/add/) `react-router-dom` `@types/react-router-dom`
 2. Add `BrowserRouter` around the `App` component in `index.tsx`
     * [BrowserRouter](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md)
 3. Create hard links in the `ProductItem` component to link to `/products/productName` e.g: `/products/ReadyRoll`
     * [Link in react-router-dom](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md)
-4. Make the `<ProductContainer>` render **ONLY** when the location changes to a product name. i.e: when the URL is `localhost:3000/products/ReadyRoll`, render `<ProductContainer>`.
+4. The `<ProductContainer>` component displays details about the selected component. Make the `<ProductContainer>` render **ONLY** when the location changes to a product name. i.e: when the URL is `localhost:3000/products/ReadyRoll`, render `<ProductContainer>`.
     * [Route in react-router-dom](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md)
 5. Show the product name given by the URL in the `<ProductContainer>`
     * [Access Route Params in React Router v4](https://jaketrent.com/post/access-route-params-react-router-v4/)
