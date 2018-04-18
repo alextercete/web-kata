@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Product } from './Models/Product';
+import './ProductItem.css';
 
 interface ProductItemProps {
     product: Product;
@@ -10,13 +11,12 @@ export class ProductItem extends React.Component<ProductItemProps> {
         const product = this.props.product;
 
         return (
-            <li>
-                {product.free && <span>Free</span>}
-                <strong>
-                    {product.name}{product.new && '*'}
-                </strong>
-                {product.description}
-            </li>
+            <div>
+                {product.free && <span className='product-free'>Free</span>}
+                {product.new && <span className='product-new'>New</span>}
+                <span className='product-name'>{product.name}</span>
+                <p className='product-description'>{product.description}</p>
+            </div>
         );
     }
 }

@@ -1,0 +1,23 @@
+.product-name {
+    font-weight: bold;
+}
+
+.product-free, .product-new {
+    color: white;
+    padding: 2px 4px;
+    margin-right: 4px;
+    border-radius: 10%;
+    font-size: .8em;
+}
+
+.product-free {
+    background-color: blue;
+}
+
+.product-new {
+    background-color: red;
+}
+
+.product-description {
+    font-size: .8em;
+}

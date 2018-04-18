@@ -1,0 +1,13 @@
+.product-list {
+    padding: 0 10px;
+}
+
+.product-item {
+    background-color: lightblue;
+    list-style-type: none;
+    padding: 4px;
+}
+
+.product-item:nth-child(odd) {
+    background-color: lightgray;
+}
