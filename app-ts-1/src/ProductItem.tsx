@@ -10,7 +10,13 @@ export class ProductItem extends React.Component<ProductItemProps> {
         const product = this.props.product;
 
         return (
-            <li><strong>{product.name}</strong> {product.description}</li>
+            <li>
+                {product.free && <span>Free</span>}
+                <strong>
+                    {product.name}{product.new && '*'}
+                </strong>
+                {product.description}
+            </li>
         );
     }
 }
