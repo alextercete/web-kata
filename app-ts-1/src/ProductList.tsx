@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Product } from './Models/Product';
+import { ProductItem } from './ProductItem';
 
 interface ProductListPops {
     products: Product[];
@@ -12,7 +13,7 @@ export class ProductList extends React.Component<ProductListPops> {
                 <ul>
                     {
                         this.props.products.map(product =>
-                            <li key={product.name}><strong>{product.name}</strong> {product.description}</li>
+                            <ProductItem key={product.name} product={product} />
                         )
                     }
                 </ul>
